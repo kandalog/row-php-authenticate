@@ -23,3 +23,31 @@ public function getId($id) {
 
 - PHP は html と一緒にかけるけど、ビジネスロジックは別ファイルに分けて書くことが多い
 - 例えばユーザ登録は専用の Class を作って、そこにビジネスロジックを集約させる
+
+## PHP の関数
+
+### session_start()
+
+- ※ Cookie にセッション ID を入れる
+- ※ セッションファイルを作成
+- ※ セッションファイルに自由に値を保存可能
+
+### session_destroy()
+
+- ※ セッションファイルを削除
+
+### $\_SESSION
+
+- ※ セッションへデータを連想配列で保村
+
+### password_hash
+
+- hash 化
+
+### password_verify
+
+- hash の検証
+
+### is_set
+
+- 値があるか確認
