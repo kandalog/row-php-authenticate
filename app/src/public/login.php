@@ -2,6 +2,12 @@
 session_start();
 require_once '../classes/UserLogic.php';
 
+$result = UserLogic::checkLogin();
+if ($result) {
+  header('Location: mypage.php');
+  return;
+}
+
 $err = [];
 
 if (!$email = filter_input(INPUT_POST, 'email')) {
@@ -23,10 +29,9 @@ $result = UserLogic::login($email, $password);
 
 // ログイン失敗時の処理
 if (!$result) {
-  header('Location: login.php');
+  header('Location: login_form.php');
   return;
 }
-echo 'ログイン成功です';
 
 ?>
 
@@ -36,17 +41,13 @@ echo 'ログイン成功です';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>ログイン完了</title>
 </head>
 
 <body>
-  <?php if (count($err) > 0) : ?>
-    <?php foreach ($err as $e) : ?>
-      <p><?php echo $e ?></p>
-    <?php endforeach ?>
-  <?php endif ?>
-  <p>ユーザ登録が完了しました</p>
-  <a href="./signup_form.php">戻る</a>
+  <h2>ログイン完了</h2>
+  <p>ログインしました!</p>
+  <a href="./mypage.php">マイページへ</a>
 </body>
 
 </html>
