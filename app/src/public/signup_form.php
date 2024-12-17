@@ -1,3 +1,8 @@
+<?php
+session_start();
+require_once '../functions.php'
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,6 +31,7 @@
       <label for="password_conf">パスワード：</label>
       <input type="password" name="password_conf">
     </p>
+    <input type="hidden" name="csrf_token" value="<?php echo h(setToken()); ?>">
     <p>
       <input type="submit" value="新規登録">
     </p>
